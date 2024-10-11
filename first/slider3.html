@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageViwers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+html{
+    font-size: 62.5%;
+}
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(44, 153, 156);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 65rem;
+            height: 35rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            background-color: rgb(156, 154, 11);
+        }
+        .main .slider{
+            width: 50rem;
+            height: 30rem;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider img{
+            width: 100%;
+            height: 100%;
+transition: all 1s linear;
+        }
+         ul{
+            display: flex;
+            gap: 2rem;
+            position: absolute;
+            margin-top: 27rem;
+            list-style-type: circle;
+            /* background-color: blue; */
+            margin-left: 3rem;
+        }
+       ul li{
+            font-size: 4rem;
+            color: aqua;
+            text-shadow: 0.1rem 0.2rem 1rem 2rem cyan,0.1rem 0.2rem 4rem 2rem cyan;
+            font-weight: bold;
+            margin-top: 5rem;
+            
+        }
+        /* li::marker{
+            content: "🥎";
+        } */
+@media(1440px>width>1000px){
+    html{
+        font-size: 80%;
+    }
+
+}
+@media(min-width:1440px){
+    html{
+        font-size: 120%;
+    }
+
+}
+@media(max-width:600px){
+    html{
+        font-size: 30%;
+    }
+    .main{
+            width: 55rem;
+            height: 35rem;
+    }
+    .main .slider{
+            width: 50rem;
+            height: 30rem;
+            display: flex;
+            flex-direction: column;
+         
+        }
+}
+     
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="slider">
+            <img src="https://picsum.photos/id/237/840/500" alt="image">
+            <img src="https://picsum.photos/seed/picsum/840/500" alt="image">
+            <img src="https://picsum.photos/id/1/840/500" alt="image">
+            <img src="https://picsum.photos/id/23/840/500" alt="image">
+            <img src="https://picsum.photos/id/14/840/500" alt="image">
+            <img src="https://picsum.photos/id/15/840/500" alt="image">
+            <img src="https://picsum.photos/id/18/840/500" alt="image">
+            <img src="https://picsum.photos/id/29/840/500" alt="image">
+            <img src="https://picsum.photos/id/26/840/500" alt="image">
+        </div>
+     </div>  
+      <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    
+</body>
+<script>
+document.querySelectorAll("ul li")[0].style.listStyleType="disc"
+document.querySelectorAll("ul li").forEach((i,index)=>{
+   i.addEventListener("click",()=>{
+    document.querySelectorAll("ul li").forEach((a)=>{
+a.style.listStyleType="circle"
+    })
+    i.style.listStyleType="disc"
+    document.querySelectorAll(".slider img").forEach((image)=>{
+        if(window.innerWidth<=600){
+            image.style.transform=`translateY(-${index*100}%)`
+        }else{
+  image.style.transform=`translateX(-${index*100}%)`}
+})
+
+
+   })
+})
+
+
+
+</script>
+</html>

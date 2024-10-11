@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.main{
+    width: 60rem;
+    height: 38rem;
+    background-color: aqua;
+    font-family: cursive;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-radius: 1rem;
+  
+
+}
+.main .slider{
+    background-color: burlywood;
+    border-radius: 1rem;
+    width: 50rem;
+    height: 30rem;
+display: flex;
+    position: relative;
+   overflow: hidden;
+}
+.slider img{
+    width: 100%;
+    height: 100%;
+    /* position: absolute; */
+    transition: all 0.5s linear;
+
+}
+.icon{
+    position: absolute;
+    display: flex;
+  
+    gap: 56rem;
+}
+.icon i{
+    position: relative;
+    font-size: 2.5rem;
+    padding: 1.9rem 2.2rem;
+    background-color: azure;
+    border-radius: 50%;
+
+}
+.hide{
+    opacity: 0;
+    z-index: -1000;
+}
+@media(max-width:425px){
+    html{
+        font-size: 40%;
+    }
+        .icon{
+   
+    display: flex;
+    flex-direction: column;
+    gap: 40rem;
+}
+.main .slider{
+    flex-direction: column;
+}
+.icon i{
+    transform: rotate(90deg);
+}
+    }
+    @media(max-width:425px){
+    html{
+        font-size: 30%;
+    }
+        .icon{
+   
+    display: flex;
+    flex-direction: column;
+    gap: 40rem;
+}
+.main .slider{
+    flex-direction: column;
+}
+.icon i{
+    transform: rotate(90deg);
+}
+    }
+@media (min-width:1050px) {
+    html{
+        font-size:90%;
+    }
+    .main{
+    width: 80rem;
+    height: 48rem;
+}
+.main .slider{
+    width: 60rem;
+    height: 40rem;
+}
+.icon{
+    gap: 80rem;
+}
+.icon i{
+    font-size:4rem;
+}
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="slider">
+            <img src="https://picsum.photos/id/237/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/1/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/3/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/12/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/11/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/10/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/seed/picsum/840/500" alt="image" class="image">
+            <img src="https://picsum.photos/id/18/840/500" alt="image" class="image">
+        </div>
+    </div> 
+    <div class="icon">
+            <i class="fa-solid fa-arrow-left" onclick="backbutton()"></i>
+            <i class="fa-solid fa-arrow-right" onclick="nextbutton()"></i>
+        </div>
+</body>
+<script>
+    var images=document.querySelectorAll(".slider .image")
+
+
+    // images.forEach((im,index)=>{
+    //  im.style.left=`${index*100}%`
+    // })
+
+
+
+var counter=0
+if(counter==0){
+document.querySelectorAll(".icon i")[0].classList.add("hide")
+    }
+
+function backbutton(){
+    console.log(counter);
+    
+    if(counter==1){
+        counter--
+        backbuttonlogic()
+document.querySelectorAll(".icon i")[0].classList.add("hide")
+    }else{
+    counter--
+    backbuttonlogic()
+    document.querySelectorAll(".icon i")[0].classList.remove("hide")
+    document.querySelectorAll(".icon i")[1].classList.remove("hide")
+
+}
+}
+function nextbutton(){
+    if(counter==7){
+        counter++
+        nextbuttonlogic()
+        document.querySelectorAll(".icon i")[1].classList.add("hide")
+
+    }
+    else{
+        counter++
+    nextbuttonlogic()
+    document.querySelectorAll(".icon i")[0].classList.remove("hide")
+    document.querySelectorAll(".icon i")[1].classList.remove("hide")
+}}
+
+function backbuttonlogic(){
+   images.forEach((im)=>{
+    if(window.innerWidth<=425){
+        im.style.transform=`translateY(-${counter*100}%)`   
+    }else{
+im.style.transform=`translateX(-${counter*100}%)`}
+   })
+}
+function nextbuttonlogic(){
+
+   images.forEach((im)=>{ 
+    if(window.innerWidth<=425){
+        im.style.transform=`translateY(-${counter*100}%)`   
+    }else{
+im.style.transform=`translateX(-${counter*100}%)`}
+   })
+}
+
+</script>
+</html>
